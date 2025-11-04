@@ -205,15 +205,32 @@ header {
 
 .itemscontainer{
     margin: 40px 0;
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 
 .itemcontainer{
-    margin: 40px;
+    margin: 10px;
     width: 250px;
+      
 }
 
 .itemcontainer img{
     width: 100%;
+}
+
+.item-name {
+    color: #535766;
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 0;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+    display: block;
 }
 
 .company-name{
