@@ -1,4 +1,4 @@
-
+//  for run page dynamically through JS
 
 let insidediv = document.querySelector('.itemscontainer');
 
@@ -16,12 +16,30 @@ items.forEach(function(item){
                     <span class="original-price">₹${item.original_price}</span>
                     <span class="discount">(${item.discount_percentage}% OFF)</span>
                 </div>
-                <button class="btn" onclick="Action();">Add to Bag</button>
+                <button class="btn" onclick="AddToBag(${item.id});">Add to Bag</button>
 
             </div>` 
 })
 
 
-function Action() {
-    
+
+// for bagicon count and link
+let bagItemArray =[];
+
+printitemCount();
+
+function printitemCount (){
+    bag_item_count = document.querySelector('.item_count');
+    bag_item_count.innerText = bagItemArray.length;
+    visiblity();  
+}
+
+function visiblity(){
+    let countVisibility = document.querySelector('.item_count');
+    (bagItemArray.length<1) ? countVisibility.style.visibility = "hidden" : countVisibility.style.visibility = "visible" ;
+}
+
+function AddToBag(itemid){
+    bagItemArray.push(itemid);
+    printitemCount();
 }
