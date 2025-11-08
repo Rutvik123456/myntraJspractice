@@ -1,7 +1,7 @@
 
 
 const items = [
-    {
+    { 
         id: '001',
         image: 'images/1.jpg',
         company: 'Carlton London',
