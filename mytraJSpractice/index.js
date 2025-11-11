@@ -26,6 +26,15 @@ items.forEach(function(item){
 // for bagicon count and link
 let bagItemArray =[];
 
+// for survive bagitems on browser refresh
+let bagElements = localStorage.getItem("bagEle");
+
+if (bagElements){
+    bagItemArray = JSON.parse(bagElements);
+}
+
+// 
+
 printitemCount();
 
 function printitemCount (){
@@ -39,7 +48,10 @@ function visiblity(){
     (bagItemArray.length<1) ? countVisibility.style.visibility = "hidden" : countVisibility.style.visibility = "visible" ;
 }
 
+
 function AddToBag(itemid){
     bagItemArray.push(itemid);
     printitemCount();
+    localStorage.setItem("bagEle",JSON.stringify(bagItemArray));
 }
+
