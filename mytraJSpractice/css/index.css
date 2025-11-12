@@ -297,7 +297,7 @@ header {
     padding: 15px;
 }
 
-.item_count{
+.item_count,.bag-items{
     
     background-color: #f16565;
     white-space: nowrap;
