@@ -49,6 +49,8 @@ bag_container_ele = bag_container_ele.filter(value =>value != itemID);
 localStorage.setItem("bagEle",JSON.stringify(bag_container_ele));
 innerhtml_bag_items_container.innerHTML='';
 loadbic ();
+bagsmry();
+loadsummary ();
 printitemCount();
 }
 
@@ -71,11 +73,39 @@ function visiblity(){
 
 // bag summary
 
-
 let TotalItem = bag_container_ele.length;
 let TotalmRP = 0;
 let dicountmrp = 0;
-let convfees = 0;
+let convfees = 99;
+let FinalAmount = 0;
+
+function bagsmry(){
+  // getting array of item
+  let totalmrpsum = bag_container_ele.map(value => {
+
+    for(let i=0;i<items.length;i++){
+                    if(items[i].id == value){
+                      return items[i];}}});
+
+        
+// refresh to 0 each time 
+ TotalmRP = 0;
+ dicountmrp = 0;
+ convfees = 99;
+ FinalAmount = 0; 
+
+
+// function for bag summary
+    totalmrpsum.forEach( (i) => {
+      TotalmRP +=  i.original_price
+      dicountmrp += i.original_price - i.current_price
+      FinalAmount += i.current_price + convfees;
+    })
+
+}
+bagsmry();
+
+
 
 
 function loadsummary (){
@@ -97,13 +127,13 @@ function loadsummary (){
             <hr>
             <div class="price-footer">
               <span class="price-item-tag">Total Amount</span>
-              <span class="price-item-value">Rs 1240</span>
+              <span class="price-item-value">Rs ${FinalAmount}</span>
             </div>
           </div>
           <button class="btn-place-order">
             <div class="css-xjhrni">PLACE ORDER</div>
           </button>`
 }
-
 loadsummary();
+
 
